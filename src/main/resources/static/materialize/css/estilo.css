@@ -1,0 +1,19 @@
+label{
+	color: black;
+	font-size: 15pt;
+}
+.titulo{
+	margin-bottom: 15px;
+}
+
+thead{
+	color: white;
+}
+
+div.card-content label{
+	color: white;
+	font-size: 15pt;
+}
+.espaco{
+	padding-left: 40px;
+}

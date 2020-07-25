@@ -1,12 +1,16 @@
 package com.eventoapp.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "evento")
@@ -22,6 +26,10 @@ public class Evento implements Serializable {
 	private String local;
 	private String data;
 	private String horario;
+	
+	@OneToMany(mappedBy = "evento", orphanRemoval = true)
+	@Cascade(org.hibernate.annotations.CascadeType.ALL)
+	private List<Convidado> convidados;
 	
 	public long getCodigo() {
 		return codigo;

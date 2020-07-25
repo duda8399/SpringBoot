@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="utf-8">
+	<!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/estilo.css"  media="screen,projection"/>
+    
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>EventosApp</title>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<div class="col s6 titulo">
+					<h3>Detalhes do Evento</h3>
+				</div>
+				<div class="col s6">
+					<h3>
+						<a class="waves-effect waves-light btn" href="/eventos">
+							<i class="material-icons left">list</i> Lista de Eventos
+						</a>
+					</h3>
+				</div>
+			</div>
+			
+			<div class="col s12">
+			
+			 <div class="row">
+			    <div class="col s12">
+			      	<div class="card teal darken-1">
+			        	<div class="card-content white-text"  th:each="evento: ${evento}">
+			          		<p><label>Nome: </label><span th:text="${evento.nome}"></span></p>
+							<p><label>Local: </label><span th:text="${evento.local}"></span></p>
+							<p><label>Data: </label><span th:text="${evento.data}"></span></p>
+							<p><label>Horário: </label><span th:text="${evento.horario}"></span></p>
+			        	</div>
+			      	</div>
+			    </div>
+			  </div>
+			</div>
+			
+			<div class="col s12">
+				<form method="post">
+					<div class="col s12 titulo">
+						<h3>Adicionar Convidados</h3>
+					</div>
+					
+					<div class="col s6">
+						<label for="nome"> Nome: </label>
+			        	<input type="text" id="nome" name="nomeConvidado" class="validate" />
+					</div>
+					
+					<div class="col s6">
+						<label for="rg"> RG: </label>
+			        	<input type="text" id="rg" name="rg" class="validate" />
+					</div>
+					
+					<div class="col s12"> 
+						<button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+					</div>
+				</form>
+			</div>
+			
+			<div class="col s12">
+				<div class="col s12 titulo">
+					<h3>Lista de Convidados</h3>
+				</div>
+				<div class="col s12">
+					<ul style="border-color: #26a69a;" class="collection" th:each="convidado: ${convidados}">
+						<li class="collection-item">
+							<i class="material-icons">assignment_ind</i>
+					      	<label>Nome: </label><span th:text="${convidado.nomeConvidado}"></span>
+				          	<label class="espaco" >RG: </label><span th:text="${convidado.rg}"></span>
+					    </li>
+					</ul>
+				  </div>
+			</div>
+			
+	 	</div>
+	</div>
+	
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+</html>
