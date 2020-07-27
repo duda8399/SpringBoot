@@ -9,9 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.Cascade;
+import org.springframework.validation.annotation.Validated;
 
+@Validated
 @Entity
 @Table(name = "evento")
 public class Evento implements Serializable {
@@ -22,9 +25,16 @@ public class Evento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long codigo;
 	
+	@NotEmpty
 	private String nome;
+	
+	@NotEmpty
 	private String local;
+	
+	@NotEmpty
 	private String data;
+	
+	@NotEmpty
 	private String horario;
 	
 	@OneToMany(mappedBy = "evento", orphanRemoval = true)

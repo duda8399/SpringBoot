@@ -37,6 +37,7 @@
 						<th>Local</th>
 						<th>Data</th>
 						<th>Horário</th>
+						<th>Deletar</th>
 					</thead>
 					<tbody>
 						<tr th:each="evento: ${evento}">
@@ -44,6 +45,10 @@
 							<td><span th:text="${evento.local}"></span></td>
 							<td><span th:text="${evento.data}"></span></td>
 							<td><span th:text="${evento.horario}"></span></td>
+							<td><a class="waves-effect waves-light red darken-4 btn-small" th:href="@{/deletarEvento/{codigo}(codigo = ${evento.codigo})}">
+									<i class="material-icons center">delete</i>
+								</a>
+							</td>
 						</tr>	
 					</tbody>
 				</table>

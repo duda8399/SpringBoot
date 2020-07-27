@@ -10,7 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
+import org.springframework.validation.annotation.Validated;
+
+@Validated
 @Entity
 @Table(name = "convidado")
 public class Convidado implements Serializable {
@@ -19,9 +23,12 @@ public class Convidado implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long codigoConvidado;
+	private long codigo;
 	
+	@NotEmpty
 	private String rg;
+	
+	@NotEmpty
 	private String nomeConvidado;
 	
 	@ManyToOne
@@ -29,12 +36,12 @@ public class Convidado implements Serializable {
 	private Evento evento;
 	
 
-	public long getCodigoConvidado() {
-		return codigoConvidado;
+	public long getCodigo() {
+		return codigo;
 	}
 
-	public void setCodigoConvidado(long codigoConvidado) {
-		this.codigoConvidado = codigoConvidado;
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getRg() {

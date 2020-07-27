@@ -47,6 +47,11 @@
 			</div>
 			
 			<div class="col s12">
+			
+				<div class="col s12">
+					<th:block th:include="mensagemValidacao"></th:block>
+				</div>
+				
 				<form method="post">
 					<div class="col s12 titulo">
 						<h3>Adicionar Convidados</h3>
@@ -73,14 +78,26 @@
 					<h3>Lista de Convidados</h3>
 				</div>
 				<div class="col s12">
-					<ul style="border-color: #26a69a;" class="collection" th:each="convidado: ${convidados}">
-						<li class="collection-item">
-							<i class="material-icons">assignment_ind</i>
-					      	<label>Nome: </label><span th:text="${convidado.nomeConvidado}"></span>
-				          	<label class="espaco" >RG: </label><span th:text="${convidado.rg}"></span>
-					    </li>
-					</ul>
-				  </div>
+					<table style="border-color: #26a69a;">
+						<thead class="teal lighten-1">
+							<th>Nome</th>
+							<th>RG</th>
+							<th>Remover</th>
+						</thead>
+						<tbody>
+							<tr th:each="convidado: ${convidados}">
+								<td><span th:text="${convidado.nomeConvidado}"></span></td>
+								<td><span th:text="${convidado.rg}"></span></td>
+								<td><span class="espaco">
+									<a class="waves-effect waves-light red darken-4 btn-small" th:href="@{/deletarConvidado/{codigo}(codigo = ${convidado.codigo})}">
+										<i class="material-icons center">delete</i>
+									</a>
+								</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 			
 	 	</div>
